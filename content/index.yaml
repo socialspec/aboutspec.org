@@ -1,0 +1,136 @@
+---
+created_at: 2026-10-07T12:00:00-07:00
+layout: landing
+title: AboutSpec
+description: |
+  About pages are already ubiquitous. 
+  It's time to make them portable. 
+  No character limits. 
+  Available wherever you get your feeds.
+
+hero:
+  eyebrow:
+    label: Request for comments
+    href: https://github.com/socialspec/aboutspec.org/issues/1
+  title: Unlimited links in bio.
+  description: |
+    About pages are already ubiquitous.
+    It's time to make them portable.
+    No character limits.
+    Available wherever you get your feeds.
+  http:
+    request:
+      method: GET
+      url: /.well-known/about.md
+    response:
+      version: HTTP/1.1
+      status: 200 OK
+      headers:
+        - name: Content-Type
+          value: text/markdown; charset=utf-8
+      body: |
+        ---
+        summary: Eager explorer, eternal optimist, passionate about taking the long way home.
+        ---
+
+        ### About Jordan
+
+        I’m an outdoor enthusiast with a gift for turning an ordinary walk into an adventure. I get excited about taking the long way home. 
+        
+        ![Out on the trail](/img/i-love-hiking.png)
+        
+        JordanDoe.com is my digital garden, where I share the [places](/places), [ideas](/ideas), and [little discoveries](/links) that keep me moving. It’s my corner of the internet—a positive space to stay open to what’s ahead and remember that every path, however familiar, has something new to offer.
+
+        The best way to reach me is [hi@jordandoe.com](mailto:hi@jordandoe.com).
+
+profile:
+  active_spec: about
+  name: Jordan Doe
+  handle: "@jordandoe.com"
+  summary: Eager explorer, eternal optimist, passionate about taking the long way home.
+  avatar: "💁🏻‍♀️"
+  default_tab: about
+  tabs:
+    - id: posts
+      label: Posts
+    - id: about
+      label: About
+  posts:
+    - date: Sep 30, 2026
+      title: I rewrote my about page in Markdown
+      blurb: And now every reader can show it.
+  about: |
+    ---
+    summary: Eager explorer, eternal optimist, passionate about taking the long way home.
+    ---
+
+    ### About Jordan
+
+    I’m an outdoor enthusiast with a gift for turning an ordinary walk into an adventure. I get excited about taking [the long way home](#the-long-way). 
+    
+    ![Out on the trail](/img/i-love-hiking.png)
+    
+    JordanDoe.com is my digital garden, where I share the [places](#places), [ideas](#ideas), and [little discoveries](#links) that keep me moving. It’s my corner of the internet—a positive space to stay open to what’s ahead and remember that every path, however familiar, has something new to offer.
+
+    The best way to reach me is [hi@jordandoe.com](mailto:hi@jordandoe.com).
+  contact: []
+
+publishers:
+  heading: For publishers
+  lede: From personal websites to CMS platforms
+  description: |
+    Use the AboutSpec API to make your about page content available in more places:
+
+    - Create a file called `about.md`
+    - Add your profile in [Markdown](https://daringfireball.net/projects/markdown/) format
+    - Include as many links and images as you like!
+    - Publish it at `/.well-known/about.md`
+    - Allow [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) requests
+
+    That's it. That's all publishers need to implement.
+  cta:
+    label: Join the RFC →
+    href: https://github.com/socialspec/aboutspec.org/issues/1
+
+subscribers:
+  heading: For subscribers
+  lede: From RSS feed readers to next-gen social experiences
+  description: |
+    Use the AboutSpec API to present richer profile pages.
+
+    - Discovery is a single `HTTP GET` request
+    - Parse responses using standard Markdown libraries
+    - Display content in "About" tabs
+
+    That's it. That's all subscribers need to implement.
+  cta:
+    label: Join the RFC →
+    href: https://github.com/socialspec/aboutspec.org/issues/1
+  http:
+    request:
+      label: Request
+      badge: Discovery
+      method: GET
+      url: https://jordandoe.com/.well-known/about.md
+      headers:
+        - name: Host
+          value: jordandoe.com
+        - name: Accept
+          value: text/markdown
+        - name: If-None-Match
+          value: '"5eb63bbbe01eeed093cb22bb8f5acdc3"'
+    response:
+      label: Response
+      badge: Verification
+      version: HTTP/1.1
+      status: 200 OK
+      checks:
+        - label: TLS certificate for
+          value: "jordandoe.com: valid"
+        - label: "Content-Type:"
+          value: text/markdown; charset=utf-8
+sitemap:
+  paths:
+    - /index.html
+    - /img/i-love-hiking.png
+    - /.well-known/about.md

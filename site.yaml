@@ -1,0 +1,58 @@
+---
+base_url: https://aboutspec.org
+title: AboutSpec
+description: |
+    About pages are already ubiquitous. 
+    It's time to make them portable. 
+    No character limits. 
+    Available wherever you get your feeds.
+brand: aboutspec
+cover: /img/socialspec-about-cover.png
+
+byline:
+    name: AboutSpec
+    favicon: /img/socialspec.png
+    email: contact@socialspec.org
+    href: /
+
+links:
+  - rel: icon
+    href: /img/socialspec.png?v=1
+    type: image/png
+  - rel: me
+    href: https://github.com/socialspec
+  - rel: me
+    href: https://github.com/socialspec/aboutspec.org
+  - rel: following
+    href: /.well-known/following.opml
+
+config:
+    themes_dir: themes
+    theme: themes/SocialSpec/latest/theme.json
+    status_layout: builtin/status.html
+    status_redirect: /
+    tidy_mode: true
+    preview:
+        id: aboutspec-local
+        bind: localhost
+        port: 4175
+
+providers:
+    default:
+        kind: s3
+        endpoint: https://5a8b6c901ff20ee02892cf121b1ead54.r2.cloudflarestorage.com
+        base_url: https://aboutspec.org
+        config:
+            bucket: aboutspec-production
+            conditional_mode: etag
+        secrets:
+          - name: access_key_id
+            key: AWS_ACCESS_KEY_ID
+          - name: secret_access_key
+            key: AWS_SECRET_ACCESS_KEY
+
+environments:
+    default: [default]
+
+sync:
+    remote: https://aboutspec.org

@@ -1,0 +1,13 @@
+---
+oss:
+  title: Open source, open process.
+  description: |
+    Help shape the future of the @aboutspec.org API. 
+  links:
+    - label: Join the RFC
+      href: https://github.com/socialspec/aboutspec.org
+      primary: true
+  github:
+    href: https://github.com/socialspec/aboutspec.org
+    repo: socialspec/aboutspec.org
+    stars: 1
